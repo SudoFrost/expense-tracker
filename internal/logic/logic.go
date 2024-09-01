@@ -16,6 +16,12 @@ func NewID() float64 {
 	return max + 1
 }
 
+func AddExpense(description string, amount float64) float64 {
+	expense := models.NewExpense(NewID(), amount, description)
+	tracker.Expenses = append(tracker.Expenses, expense)
+	return expense.ID
+}
+
 func init() {
 	tracker = models.NewTracker()
 }
