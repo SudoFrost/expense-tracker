@@ -25,4 +25,7 @@ func init() {
 
 	addCmd.Flags().StringP("description", "d", "", "Description of the expense")
 	addCmd.Flags().Float64P("amount", "a", 0, "Amount of the expense")
+
+	addCmd.MarkFlagRequired("description")
+	addCmd.MarkFlagRequired("amount")
 }
