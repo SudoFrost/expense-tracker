@@ -4,13 +4,19 @@ import (
 	"fmt"
 
 	"github.com/spf13/cobra"
+	"github.com/sudofrost/expense-tracker/internal/logic"
 )
 
 var addCmd = &cobra.Command{
 	Use:   "add",
 	Short: "Adds a new expense",
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("#TODO: Add a new expense")
+		description, _ := cmd.Flags().GetString("description")
+		amount, _ := cmd.Flags().GetFloat64("amount")
+
+		id := logic.AddExpense(description, amount)
+
+		fmt.Printf("Expense added successfully. (ID: %v)\n", id)
 	},
 }
 
