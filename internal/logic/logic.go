@@ -4,4 +4,8 @@ import (
 	"github.com/sudofrost/expense-tracker/internal/models"
 )
 
-var tracker *models.Tracker = models.NewTracker()
+var tracker *models.Tracker
+
+func init() {
+	tracker = models.NewTracker()
+}
