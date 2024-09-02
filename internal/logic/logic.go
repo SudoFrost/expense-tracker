@@ -2,6 +2,7 @@ package logic
 
 import (
 	"fmt"
+	"time"
 
 	"github.com/sudofrost/expense-tracker/internal/models"
 	"github.com/sudofrost/expense-tracker/internal/storage"
@@ -47,6 +48,7 @@ func UpdateExpense(id float64, description string, amount float64) error {
 		if expense.ID == id {
 			expense.Description = description
 			expense.Amount = amount
+			expense.UpdatedAt = time.Now()
 			return nil
 		}
 	}
