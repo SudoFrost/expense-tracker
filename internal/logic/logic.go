@@ -23,6 +23,14 @@ func AddExpense(description string, amount float64) float64 {
 	return expense.ID
 }
 
+func GetExpenses() []models.Expense {
+	var expenses = make([]models.Expense, 0, len(tracker.Expenses))
+	for _, expense := range tracker.Expenses {
+		expenses = append(expenses, *expense)
+	}
+	return expenses
+}
+
 func init() {
 	tracker = models.NewTracker()
 
