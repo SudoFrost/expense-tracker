@@ -1,6 +1,8 @@
 package logic
 
 import (
+	"fmt"
+
 	"github.com/sudofrost/expense-tracker/internal/models"
 	"github.com/sudofrost/expense-tracker/internal/storage"
 )
@@ -30,6 +32,16 @@ func GetExpenses() []models.Expense {
 	}
 	return expenses
 }
+
+func GetExpense(id float64) (models.Expense, error) {
+	for _, expense := range tracker.Expenses {
+		if expense.ID == id {
+			return *expense, nil
+		}
+	}
+	return models.Expense{}, fmt.Errorf("expense not found")
+}
+
 
 func init() {
 	tracker = models.NewTracker()
