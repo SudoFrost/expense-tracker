@@ -9,7 +9,11 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var rootCmd = &cobra.Command{}
+var rootCmd = &cobra.Command{
+	Use:   os.Args[0],
+	Short: "Expense tracker",
+	Long:  `Expense tracker`,
+}
 
 func Execute() {
 	err := rootCmd.Execute()
