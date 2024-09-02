@@ -22,7 +22,7 @@ var updateCmd = &cobra.Command{
 			fmt.Fprintln(os.Stderr, "ID is required")
 			return
 		}
-		id, err := strconv.ParseFloat(args[0], 64)
+		id, err := strconv.ParseInt(args[0], 10, 64)
 		if err != nil {
 			fmt.Fprintln(os.Stderr, "Invalid ID")
 			return
@@ -58,7 +58,7 @@ var updateCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(updateCmd)
 	updateCmd.Flags().StringP("description", "d", "", "Description of the expense")
-	updateCmd.Flags().Float64P("amount", "a", 0, "Amount of the expense")
+	updateCmd.Flags().Int64P("amount", "a", 0, "Amount of the expense")
 
 	updateCmd.MarkFlagsOneRequired("description", "amount")
 }

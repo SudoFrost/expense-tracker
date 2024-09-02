@@ -10,8 +10,8 @@ import (
 
 var tracker *models.Tracker
 
-func NewID() float64 {
-	var max float64
+func NewID() int64 {
+	var max int64
 	for _, expense := range tracker.Expenses {
 		if expense.ID > max {
 			max = expense.ID
@@ -20,7 +20,7 @@ func NewID() float64 {
 	return max + 1
 }
 
-func AddExpense(description string, amount float64) float64 {
+func AddExpense(description string, amount float64) int64 {
 	expense := models.NewExpense(NewID(), amount, description)
 	tracker.Expenses = append(tracker.Expenses, expense)
 	return expense.ID
@@ -34,7 +34,7 @@ func GetExpenses() []models.Expense {
 	return expenses
 }
 
-func GetExpense(id float64) (models.Expense, error) {
+func GetExpense(id int64) (models.Expense, error) {
 	for _, expense := range tracker.Expenses {
 		if expense.ID == id {
 			return *expense, nil
@@ -43,7 +43,7 @@ func GetExpense(id float64) (models.Expense, error) {
 	return models.Expense{}, fmt.Errorf("expense not found")
 }
 
-func UpdateExpense(id float64, description string, amount float64) error {
+func UpdateExpense(id int64, description string, amount float64) error {
 	for _, expense := range tracker.Expenses {
 		if expense.ID == id {
 			expense.Description = description

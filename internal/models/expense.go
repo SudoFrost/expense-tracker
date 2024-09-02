@@ -5,14 +5,14 @@ import (
 )
 
 type Expense struct {
-	ID          float64
+	ID          int64
 	Description string
 	Amount      float64
 	CreatedAt   time.Time
 	UpdatedAt   time.Time
 }
 
-func NewExpense(id, amount float64, description string) *Expense {
+func NewExpense(id int64, amount float64, description string) *Expense {
 	return &Expense{
 		ID:          id,
 		Description: description,

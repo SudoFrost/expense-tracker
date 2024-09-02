@@ -26,7 +26,7 @@ var listCmd = &cobra.Command{
 		data := make([]map[string]string, 0, len(expenses))
 		for _, expense := range expenses {
 			data = append(data, map[string]string{
-				"ID":          fmt.Sprintf("%.0f", expense.ID),
+				"ID":          fmt.Sprintf("%d", expense.ID),
 				"Description": expense.Description,
 				"Amount":      fmt.Sprintf("%.2f", expense.Amount),
 				"Created At":  expense.CreatedAt.Format("2006-01-02 15:04:05"),
