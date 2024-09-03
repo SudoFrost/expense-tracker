@@ -55,6 +55,16 @@ func UpdateExpense(id int64, description string, amount float64) error {
 	return fmt.Errorf("expense not found")
 }
 
+func DeleteExpense(id int64) error {
+	for i, expense := range tracker.Expenses {
+		if expense.ID == id {
+			tracker.Expenses = append(tracker.Expenses[:i], tracker.Expenses[i+1:]...)
+			return nil
+		}
+	}
+	return fmt.Errorf("expense not found")
+}
+
 func init() {
 	tracker = models.NewTracker()
 
